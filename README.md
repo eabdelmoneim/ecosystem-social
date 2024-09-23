@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# thirdweb Ecosystem Wallets with social profiles
+
+This is an example app that shows how to connect a thirdweb Ecosystem Wallet to a social profiles.
 
 ## Getting Started
 
