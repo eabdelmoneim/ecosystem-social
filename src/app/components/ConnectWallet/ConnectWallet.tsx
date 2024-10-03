@@ -3,10 +3,7 @@
 import { ConnectButton } from "thirdweb/react";
 import { ecosystemWallet, createWallet } from "thirdweb/wallets";
 import { arbitrumSepolia } from "thirdweb/chains";
-import { client } from "../../utils/thirdwebClient";
-
-const ecosystemWalletName = process.env.NEXT_PUBLIC_ECOSYSTEM_WALLET_NAME || "";
-const partnerId = process.env.NEXT_PUBLIC_PARTNER_ID || "";
+import { client, ecosystemWalletName, partnerId } from "../../utils/thirdwebClient";
 
 const ecosystemWalletInstance = ecosystemWallet(`ecosystem.${ecosystemWalletName}`, {
   partnerId: partnerId

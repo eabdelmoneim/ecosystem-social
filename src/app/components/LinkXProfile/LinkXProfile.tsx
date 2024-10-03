@@ -1,8 +1,9 @@
 'use client'
 
 import { useAdminWallet } from "thirdweb/react";
-import { linkProfile, Wallet, getProfiles  } from "thirdweb/wallets";
+import { linkProfile, getProfiles  } from "thirdweb/wallets";
 import { useState, useEffect } from "react";
+import { client, ecosystemWalletName, partnerId } from "../../utils/thirdwebClient";
 
 export function LinkXProfile() {
   const wallet = useAdminWallet();
@@ -13,7 +14,7 @@ export function LinkXProfile() {
     const checkXProfile = async () => {
       if (wallet) {
         const address = wallet?.getAccount()?.address;
-        const profiles = await getProfiles(wallet as Wallet<"inApp" | `ecosystem.${string}`>);
+        const profiles = await getProfiles({client, ecosystem: {id: `ecosystem.${ecosystemWalletName}`, partnerId: partnerId} });
         console.log("profiles:" + profiles.length + " address:" + address);
         setIsXLinked(profiles.some((profile: { type: string; })  => profile.type === "x"));
       }
@@ -35,7 +36,7 @@ export function LinkXProfile() {
 
     setIsLoading(true);
     try {
-      await linkProfile(wallet as Wallet<"inApp" | `ecosystem.${string}`>, {strategy: "x"});
+      await linkProfile( {client: client,strategy: "x"});
       alert("X profile linked successfully!");
       setIsXLinked(true);
     } catch (error) {
